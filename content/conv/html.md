@@ -1,6 +1,5 @@
 +++
 date = '2025-08-21T14:55:07-06:00'
-draft = true
 title = 'HTML'
 +++
 
