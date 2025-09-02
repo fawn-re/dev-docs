@@ -1,0 +1,67 @@
+header>nav {
+	position: sticky;
+	top: 1rem;
+	height: fit-content;
+	text-wrap: nowrap;
+	background-color: var(--bs-body-bg);
+	padding-inline: 1rem;
+	border-right: 1px solid var(--bs-border-color);
+	transition: transform 120ms ease-out;
+}
+
+header>nav a[aria-current] {
+	font-weight: bold;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	header>nav {
+		transition: transform 0 ease-out;
+	}
+}
+
+header>input[type="checkbox"][aria-label="Toggle navigation"] {
+	position: fixed;
+	bottom: 1.25rem;
+	right: 1.25rem;
+	z-index: 1;
+	width: 2rem;
+	height: 2rem;
+	cursor: pointer;
+	font-size: 1.25rem;
+	appearance: none;
+	border: var(--bs-border-width) solid var(--bs-border-color);
+	border-radius: .5rem;
+	background-color: var(--bs-body-bg);
+	box-shadow: var(--bs-box-shadow);
+	/* Nav toggle button should only be visible on small screens */
+	display: none;
+}
+
+@media (max-width: 786px) {
+	header>nav {
+		position: fixed;
+		top: 0;
+		right: 0;
+		height: 100%;
+		padding: 1rem;
+		border-left: 1px solid var(--bs-border-color);
+		box-shadow: var(--bs-box-shadow);
+		transform: translateX(100%);
+		will-change: transform;
+	}
+
+	header>input[type="checkbox"][aria-label="Toggle navigation"] {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		&:checked {
+			background-color: #0d6efd;
+			border-color: #0d6efd;
+
+			&+nav {
+				transform: translateX(0);
+			}
+		}
+	}
+}

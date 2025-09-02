@@ -1,0 +1,3 @@
+{{/* <h2> but it's also a link to itself for easy sharing */}}
+{{ $href := anchorize (.Get "title") }}
+<h2 id="{{ $href }}"><a href="#{{ $href }}">{{ .Get "title" }}</a></h2>

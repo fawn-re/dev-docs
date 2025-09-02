@@ -1,0 +1,6 @@
+[submodule "assets/bootstrap"]
+	path = assets/bootstrap
+	url = https://github.com/twbs/bootstrap.git
+[submodule "assets/Font-Awesome"]
+	path = assets/Font-Awesome
+	url = gh:FortAwesome/Font-Awesome

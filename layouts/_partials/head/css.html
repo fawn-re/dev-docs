@@ -1,0 +1,13 @@
+{{- range $in, $out := (dict "bootstrap/scss/bootstrap.scss" "css/twbs.css" "sass/main.scss" "css/main.css" "Font-Awesome/css/fontawesome.css" "css/fa.css" "Font-Awesome/css/solid.css" "css/fa-solid.css") }}
+	{{- with resources.Get $in }}
+		{{- with . | toCSS (dict "enableSourceMap" hugo.IsDevelopment "outputStyle" (cond hugo.IsDevelopment "expanded" "compressed") "transpiler" "dartsass" "targetPath" $out "vars" site.Params.styles) }}
+			{{- if hugo.IsDevelopment }}
+				<link rel="stylesheet" href="{{ .RelPermalink }}">
+			{{- else }}
+				{{- with . | fingerprint }}
+					<link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+				{{- end }}
+			{{- end }}
+		{{- end }}
+	{{- end }}
+{{- end }}

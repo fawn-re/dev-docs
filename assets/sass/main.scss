@@ -1,0 +1,70 @@
+@use 'nav';
+@use 'custom';
+
+body {
+	display: flex;
+	justify-content: center;
+}
+
+main {
+	margin: 1rem;
+	width: 96ch;
+	overflow-x: auto;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+blockquote {
+	border-inline-start: 3px solid var(--bs-border-color);
+	padding-inline-start: 2ch;
+}
+
+p:last-child {
+	margin-bottom: 0;
+}
+
+/* Fixes iOS font sizing anomaly, see https://stackoverflow.com/questions/38346494/why-is-flex-affecting-font-size-on-ios */
+code {
+	text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+
+.highlight :where(div, pre) {
+	/* Fix missing horizontal scrollbar on iOS, see https://github.com/gohugoio/hugo/issues/7326 */
+	overflow-x: auto;
+}
+
+/* Remove space and rounded borders between adjacent examples and code blocks */
+.highlight :where(div, pre),
+.example {
+	padding: 1rem;
+	border: 1px solid var(--bs-border-color);
+	border-radius: var(--bs-border-radius);
+}
+
+:is(.highlight, .example)+.example,
+:is(.highlight, .example)+.highlight>:where(div, pre) {
+	border-top: none;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+
+.example:has(+:is(.highlight, .example)),
+.highlight:has(+:is(.highlight, .example))>:where(div, pre) {
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	margin-bottom: 0;
+}
+
+/* Make headers that are also links look normal */
+:where(h1, h2, h3, h4, h5, h6)>a {
+	color: var(--bs-heading-color);
+}

@@ -1,0 +1,47 @@
+/* Custom RESERT components and styles */
+
+.action_bar {
+	--action-bar-gap: 0.7rem;
+	display: flex;
+	flex-flow: row wrap;
+	align-items: center;
+	gap: var(--action-bar-gap);
+	padding: var(--action-bar-gap);
+	border-radius: var(--bs-border-radius-lg);
+	background-color: rgba(var(--bs-secondary-rgb), .15);
+}
+
+/* Accordion */
+
+summary {
+	font-weight: bold;
+	padding: .5rem 1rem;
+}
+
+details[open] summary {
+	background-color: var(--bs-tertiary-bg);
+	border-bottom: var(--bs-border-width) solid var(--bs-border-color);
+}
+
+details {
+	border: var(--bs-border-width) solid var(--bs-border-color);
+}
+
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/::details-content */
+details[open] :not(summary) {
+	margin: .5rem 1rem;
+}
+
+details:first-of-type {
+	border-top-left-radius: var(--bs-border-radius);
+	border-top-right-radius: var(--bs-border-radius)
+}
+
+details:not(:first-of-type) {
+	border-top: 0
+}
+
+details:last-of-type {
+	border-bottom-right-radius: var(--bs-border-radius);
+	border-bottom-left-radius: var(--bs-border-radius)
+}

@@ -1,0 +1,15 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-us'
+title = 'Dev Docs'
+disableKinds = [ 'taxonomy', 'term' ]
+
+[markup.highlight]
+style = "github-dark"
+
+[markup.goldmark.renderer]
+unsafe = true
+
+[module]
+[[module.mounts]]
+source = "assets/Font-Awesome/webfonts"
+target = "static/webfonts"

@@ -1,0 +1,29 @@
+{{/* TODO: Iterate over sections instead of hardcoding them (use Hugo's menu utilities like a normal person?) */}}
+{{ $page := .Page }}
+<input type="checkbox" aria-label="Toggle navigation" class="fa-solid fa-bars">
+<nav>
+	<strong><i class="fa-solid fa-code me-2"></i>Coding Conventions</strong>
+	<ul>
+	{{ range (where .Site.Pages "Section" "conv") }}
+		{{ range .Pages }}
+			{{ $attrs := dict "href" .RelPermalink }}
+			{{ if eq $page.RelPermalink .RelPermalink }}
+				{{ $attrs = merge $attrs (dict "aria-current" "page") }}
+			{{ end }}
+			<li><a {{- range $k, $v := $attrs }}{{- printf " %s=%q" $k $v | safeHTMLAttr }}{{- end }}>{{ .Title }}</a></li>
+		{{ end }}
+	{{ end }}
+	</ul>
+	<strong><i class="fa-solid fa-paintbrush me-2"></i>Style Guide</strong>
+	<ul>
+	{{ range (where .Site.Pages "Section" "style") }}
+		{{ range .Pages }}
+			{{ $attrs := dict "href" .RelPermalink }}
+			{{ if eq $page.RelPermalink .RelPermalink }}
+				{{ $attrs = merge $attrs (dict "aria-current" "page") }}
+			{{ end }}
+			<li><a {{- range $k, $v := $attrs }}{{- printf " %s=%q" $k $v | safeHTMLAttr }}{{- end }}>{{ .Title }}</a></li>
+		{{ end }}
+	{{ end }}
+	</ul>
+</nav>
