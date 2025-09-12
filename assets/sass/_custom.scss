@@ -11,6 +11,18 @@
 	background-color: rgba(var(--bs-secondary-rgb), .15);
 }
 
+/* Button icons */
+.btn::before {
+	display: inline-block;
+	font: normal normal var(--fa-style, 900) 1em/1 var(--fa-family, var(--fa-style-family, "Font Awesome 7 Free"));
+	margin-inline-end: .75ch;
+	content: var(--fa);
+}
+
+.btn[class*="fa-"] {
+	text-wrap: nowrap;
+}
+
 /* Accordion */
 
 summary {
